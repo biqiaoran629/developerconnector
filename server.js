@@ -1,15 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
-
-// DB Config
-const db = require("./config/keys").mongoURI;
+const bodyParser = require("body-parser");
 
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const posts = require("./routes/api/posts");
 
-// Connect to MongoDB
+// DB Config
+const db = require("./config/keys").mongoURI;
 
+// Connect to MongoDB
 mongoose
   .connect(
     db,
@@ -19,6 +19,10 @@ mongoose
   .catch(err => console.log(err));
 
 const app = express();
+
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const port = process.env.PORT || 5000;
 
