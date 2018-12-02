@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 // Create Schema
 const ProfileSchema = new Schema({
   user: {
+    // Associate user by its id
+    // Reference the users collection
     type: Schema.Types.ObjectId,
     ref: "users"
   },
@@ -80,6 +82,6 @@ const ProfileSchema = new Schema({
   }
 });
 
-const Profile = mongoose.model("users", ProfileSchema);
+const Profile = mongoose.model("profile", ProfileSchema);
 
 module.exports = Profile;
