@@ -13,7 +13,7 @@ const validateLoginInput = require("../../validation/login");
 
 const router = express.Router();
 
-// @routes GET api/users/test
+// @route GET api/users/test
 // @desc Tests users route
 // @access Public
 
@@ -21,7 +21,7 @@ router.get("/test", (req, res) => {
   res.json({ msg: "Users works" });
 });
 
-// @routes GET api/users/register
+// @route GET api/users/register
 // @desc Register user
 // @access Public
 
@@ -67,7 +67,7 @@ router.post("/register", (req, res) => {
   });
 });
 
-// @routes GET api/users/login
+// @route GET api/users/login
 // @desc Login user / Returning JWT Token
 // @access Public
 
@@ -123,7 +123,7 @@ router.post("/login", (req, res) => {
   });
 });
 
-// @routes GET api/users/current
+// @route GET api/users/current
 // @desc Return current user
 // @access Private
 router.get(

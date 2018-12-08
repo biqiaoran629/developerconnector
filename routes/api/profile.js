@@ -12,14 +12,14 @@ const Profile = require("../../models/Profile");
 // Load User Model
 const User = require("../../models/User");
 
-// @routes GET api/profile/test
+// @route GET api/profile/test
 // @desc Tests profile route
 // @access Public
 router.get("/test", (req, res) => {
   res.json({ msg: "Profile works" });
 });
 
-// @routes GET api/profile
+// @route GET api/profile
 // @desc Get current users profile
 // @access Private
 router.get(
@@ -43,7 +43,7 @@ router.get(
   }
 );
 
-// @routes POST api/profile/all
+// @route POST api/profile/all
 // @desc Get all profiles
 // @access Public
 
@@ -65,7 +65,7 @@ router.get("/all", (req, res) => {
     });
 });
 
-// @routes POST api/profile/handle/:handle
+// @route POST api/profile/handle/:handle
 // @desc Get profile by handle
 // @access Public
 
@@ -86,7 +86,7 @@ router.get("/handle/:handle", (req, res) => {
     });
 });
 
-// @routes POST api/profile/user/:user_id
+// @route POST api/profile/user/:user_id
 // @desc Get profile by user_id
 // @access Public
 
@@ -107,7 +107,7 @@ router.get("/user/:user_id", (req, res) => {
     });
 });
 
-// @routes POST api/profile
+// @route POST api/profile
 // @desc Create or edit user profile
 // @access Private
 router.post(
@@ -200,7 +200,7 @@ router.post(
   }
 );
 
-// @routes POST api/profile/experience
+// @route POST api/profile/experience
 // @desc Add experience to profile
 // @access Private
 
@@ -234,7 +234,7 @@ router.post(
   }
 );
 
-// @routes POST api/profile/education
+// @route POST api/profile/education
 // @desc Add education to profile
 // @access Private
 
@@ -268,7 +268,7 @@ router.post(
   }
 );
 
-// @routes DELETE api/profile/experience/:exp_id
+// @route DELETE api/profile/experience/:exp_id
 // @desc Delete experience from profile
 // @access Private
 
@@ -294,7 +294,7 @@ router.delete(
   }
 );
 
-// @routes DELETE api/profile/education/:exp_id
+// @route DELETE api/profile/education/:exp_id
 // @desc Delete education from profile
 // @access Private
 
@@ -320,7 +320,7 @@ router.delete(
   }
 );
 
-// @routes DELETE api/profile
+// @route DELETE api/profile
 // @desc Delete user and profile
 // @access Private
 
