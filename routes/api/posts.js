@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 const passport = require("passport");
 
 // Post model
@@ -82,7 +81,7 @@ router.delete(
   (req, res) => {
     const errors = {};
 
-    Profile.findOne({ user: req.user.id }).then(profile => {
+    Profile.findOne({ user: req.user.id }).then(() => {
       Post.findById(req.params.id)
         .then(post => {
           // Check for post owner
@@ -112,7 +111,7 @@ router.post(
   (req, res) => {
     const errors = {};
 
-    Profile.findOne({ user: req.user.id }).then(profile => {
+    Profile.findOne({ user: req.user.id }).then(() => {
       Post.findById(req.params.id)
         .then(post => {
           if (
@@ -146,7 +145,7 @@ router.post(
   (req, res) => {
     const errors = {};
 
-    Profile.findOne({ user: req.user.id }).then(profile => {
+    Profile.findOne({ user: req.user.id }).then(() => {
       Post.findById(req.params.id)
         .then(post => {
           if (
@@ -204,7 +203,7 @@ router.post(
       post
         .save()
         .then(post => res.json(post))
-        .catch(err => {
+        .catch(() => {
           errors.nopostfound = "No post found";
           res.status(404).json({ errors });
         });
@@ -242,7 +241,7 @@ router.delete(
 
         post.save().then(post => res.json(post));
       })
-      .catch(err => {
+      .catch(() => {
         errors.postnotfound = "No post found";
         res.status(404).json(errors);
       });
