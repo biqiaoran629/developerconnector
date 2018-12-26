@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import classnames from "classnames";
 import { connect } from "react-redux";
-import registerUser from "../../actions/authActions";
+import { registerUser } from "../../actions/authActions";
 
 class Register extends Component {
   constructor() {
@@ -18,6 +18,7 @@ class Register extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(JSON.stringify(nextProps));
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
