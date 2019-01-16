@@ -12,7 +12,7 @@ class Experience extends Component {
         <td>{exp.title}</td>
         <td>
           <Moment format="YYYY/MM/DD">{exp.from}</Moment> -
-          {exp.to ? <Moment format="YYYY/MM/DD"> {exp.to}</Moment> : " Current"}
+          {exp.to ? <Moment format="YYYY/MM/DD">{exp.to}</Moment> : " Current"}
         </td>
         <td>
           <button

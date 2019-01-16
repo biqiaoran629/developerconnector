@@ -16,12 +16,12 @@ class Education extends Component {
         <td>{edu.degree}</td>
         <td>
           <Moment format="YYYY/MM/DD">{edu.from}</Moment> -
-          {edu.to ? <Moment format="YYYY/MM/DD"> {edu.to}</Moment> : " Current"}
+          {edu.to ? <Moment format="YYYY/MM/DD">{edu.to}</Moment> : " Current"}
         </td>
         <td>
           <button
             onClick={() => {
-              this.props.deleteExperience(edu._id);
+              this.props.deleteEducation(edu._id);
             }}
             className="btn btn-danger"
           >
