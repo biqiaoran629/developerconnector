@@ -39,7 +39,7 @@ class Experience extends Component {
               <th />
             </tr>
           </thead>
-          {experience}
+          <tbody>{experience}</tbody>
         </table>
       </div>
     );

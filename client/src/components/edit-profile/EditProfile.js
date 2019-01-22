@@ -290,7 +290,7 @@ class EditProfile extends Component {
 }
 
 EditProfile.propTypes = {
-  createProfile: PropTypes.func.isRequird,
+  createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
