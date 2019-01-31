@@ -4,8 +4,16 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
+import Spinner from "../common/Spinner";
+import { getProfiles } from "../../actions/profileActions";
 
 class PostItem extends Component {
+  componentDidMount() {
+    if (!this.props.profile.profiles) {
+      this.props.getProfiles();
+    }
+  }
+
   findUserLike = likes => {
     const { auth } = this.props;
     if (likes.filter(like => like.user === auth.user.id).length > 0) {
@@ -16,19 +24,42 @@ class PostItem extends Component {
   };
 
   render() {
-    const { post, auth, showActions } = this.props;
+    const { post, auth, profile, showActions } = this.props;
+
+    let ProfileAvatar;
+    if (profile.profiles === null) {
+      ProfileAvatar = <Spinner />;
+    } else {
+      const profileHandle = profile.profiles.find(
+        profile => profile.user.name === post.name
+      );
+
+      if (profileHandle != null) {
+        ProfileAvatar = (
+          <Link to={`/profile/${profileHandle.handle}`}>
+            <img
+              className="rounded-circle d-none d-md-block"
+              src={post.avatar}
+              alt=""
+            />
+          </Link>
+        );
+      } else {
+        ProfileAvatar = (
+          <img
+            className="rounded-circle d-none d-md-block"
+            src={post.avatar}
+            alt=""
+          />
+        );
+      }
+    }
 
     return (
       <div className="card card-body mb-3">
         <div className="row">
           <div className="col-md-2">
-            <Link to={`/profile/${auth.user.handle}`}>
-              <img
-                className="rounded-circle d-none d-md-block"
-                src={post.avatar}
-                alt=""
-              />
-            </Link>
+            {ProfileAvatar}
             <br />
             <p className="text-center">{post.name}</p>
           </div>
@@ -87,18 +118,21 @@ PostItem.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.profile
 });
 
 PostItem.propTypes = {
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
+  getProfiles: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 export default connect(
   mapStateToProps,
-  { deletePost, addLike, removeLike }
+  { deletePost, addLike, removeLike, getProfiles }
 )(PostItem);
