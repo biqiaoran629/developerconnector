@@ -3,3 +3,4 @@ package-lock.json
 .eslintrc
 .gitignore
 /client/node_modules
+/config/keys_dev.js
